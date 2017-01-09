@@ -1,3 +1,6 @@
 https://www.youtube.com/watch?v=GazC3A4OQTE
 
 https://www.youtube.com/results?search_query=dijkstra%27s+algorithm+for+single+source+shortest+path+problem
+
+
+The length of the shortest distance...
