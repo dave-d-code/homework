@@ -26,15 +26,25 @@ $marked = returnMarked($tableArray[0]); // need to iterate start i at count
 $node = 0; // work this out.. last value of marked.. index of
 
 
-$tableArray[0]['marked'] = $marked; // sort
+//$tableArray[0]['marked'] = $marked; // sort
 
 // start a new row
 $newRow = [];
 
-array_push($newRow, $tableArray[0]['marked']); // sort
+//array_push($newRow, $tableArray[0]['marked']); // sort
 $nextLine = calculateRow($graph, $tableArray, $marked, $newRow);
 $newRow = array_merge($newRow, $nextLine);
+// next mark to be added // first take out the zero
 
+$temp = $newRow;
+unset($temp[key($marked)]);
+//var_dump($temp);
+//$newRow['marked'] = returnMarked($temp);
+$tableArray[] = $newRow;
+var_dump($tableArray);
+
+$marked = returnMarked($temp);
+var_dump($marked);
 
 
 
