@@ -19,34 +19,57 @@ $finish = 2;
 $tableArray = [];
 $markedArray = [];
 
-// set first row of table
+// set first row of table ROW 1
 array_push($tableArray, setInfinity($start, $graph));
 
-$marked = returnMarked($tableArray[0]); // need to iterate start i at count
-$node = 0; // work this out.. last value of marked.. index of
+// TODO.. each code line written out like pseudocode.
+// Code review and refactor all of this. needs obvious iteration.
+// solution for shortest route A - C will be $tableArray[2][2].
+
+$marked = returnMarked($tableArray[0]); // TODOneed to iterate start i at count
+$markedArray = array_merge($markedArray, $marked); // push values of marked for next row 
 
 
-//$tableArray[0]['marked'] = $marked; // sort
-
-// start a new row
+// start a new row ROW 2
 $newRow = [];
 
-//array_push($newRow, $tableArray[0]['marked']); // sort
+$newRow = array_merge($newRow, $markedArray);
+
+
 $nextLine = calculateRow($graph, $tableArray, $marked, $newRow);
 $newRow = array_merge($newRow, $nextLine);
+
 // next mark to be added // first take out the zero
 
 $temp = $newRow;
 unset($temp[key($marked)]);
-//var_dump($temp);
+
 //$newRow['marked'] = returnMarked($temp);
 $tableArray[] = $newRow;
+/////////////////////////////  EVERYTHING FINE NEXT CYCLE /////////////////////////////////
+
+// new marked variable
+$marked = returnMarked($temp);
+
+$markedArray = array_merge($markedArray, $marked);
+
+////////////// start a new row ROW 3
+$newRow = [];
+$newRow = array_merge($newRow, $markedArray);
+
+
+$nextLine = calculateRow($graph, $tableArray, $marked, $newRow);
+
+$newRow = array_merge($newRow, $nextLine);
+
+$tableArray[] = $newRow;
+
 var_dump($tableArray);
 
-$marked = returnMarked($temp);
-var_dump($marked);
+// At this time, the solution is complete, as A - C is $tableArray[2][2];
+// Code needs factoring to 
 
-
+echo $tableArray[2][2] . "\r\n";
 
 
 
@@ -58,18 +81,16 @@ function calculateRow($graph, $tableArray, $marked, $newRow)
 	$previousRow = count($tableArray) -1;
 	$row = [];
 	$mykey = key($marked);
+	echo $marked[$mykey];
 
-	for ($i=0; $i < count($graph); $i++) { 
-		if (array_key_exists($i, $newRow)) {
-			continue;
-		}
+
+	for ($i=count($newRow); $i < count($tableArray[0]); $i++) { 
 
 		$destinationValue = $tableArray[$previousRow][$i];
+		$row[$i] = $tableArray[$previousRow][$i];
 
-		if (array_key_exists($i, $graph[$mykey])) {
-			$row[$i] = $graph[$mykey][$i];
-		} else {
-			$row[$i] = $tableArray[$previousRow][$i];
+		if (array_key_exists($i, $graph[$mykey])) { 
+			$row[$i] = calculateMinValue($destinationValue, $marked[$mykey], $graph[$mykey][$i]);
 		}
 	}
 
@@ -96,12 +117,14 @@ function setInfinity($start, $graph)
 
 function returnMarked($row)
 {
-	return array_keys($row, min($row));
+	$key = min(array_keys($row, min($row)));
+	return array($key => $row[$key]);
 }
+
 
 function calculateMinValue($destinationValue, $marked, $edge)
 {
-	return min($destinationValue, ($marked + $edge));
+	return min($destinationValue, ((int) $marked + $edge));
 }
 
 
