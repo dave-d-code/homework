@@ -9,7 +9,38 @@ deep learning for neural networks
 
 http://neuralnetworksanddeeplearning.com/
 
-https://see.stanford.edu/Course/CS229
+https://see.stanford.edu/Course/CS229 - this stuff another time
 
+
+Homework  11/01/2017
+
+https://www.quora.com/What-is-a-rolling-hash-and-when-is-it-useful
+
+http://stackoverflow.com/questions/9871850/implementation-of-rabin-karp-algorithm-with-php
+
+https://github.com/YADL/yadl/wiki/Rabin-Karp-for-Variable-Chunking
+
+http://blog.gluster.org/2016/04/deduplication-part-1-rabin-karp-for-variable-chunking/
+
+http://blog.teamleadnet.com/2012/10/rabin-karp-rolling-hash-dynamic-sized.html
+
+find robin harp on YT as well.
+
+**************  also terms to cover and get familiar with ***************
+
+ACLs for users
+memCache
+file chunking - rolling checksum
+HTTP2
+LBFS
+load balancer nginx
+AB testing
+Spdy
+TCP connections..
+
+
+
+
+ReactPHP projects
 
 

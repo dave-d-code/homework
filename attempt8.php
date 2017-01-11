@@ -8,6 +8,15 @@ class TrainsSolution {
 		$this->graph = $graph;
 	}
 
+
+	/**
+	 * Question 9: length of shortest route from c to c.
+	 * meant to be b to b
+	 * @param  [type] $start  [description]
+	 * @param  [type] $finish [description]
+	 * @param  [type] $limit  [description]
+	 * @return [type]         [description]
+	 */
 	public function getTrips($start, $finish, $limit) {
 		$trips = 0;
 		$q = new SplQueue();
@@ -33,6 +42,12 @@ class TrainsSolution {
 		return $trips;
 	}
 
+	/**
+	 * Question 8 find the shortest path from A to C.
+	 * @param  [type] $start  [description]
+	 * @param  [type] $finish [description]
+	 * @return [type]         [description]
+	 */
 	public function findShortestPath($start, $finish) {
 		$q = new SplQueue();
 
@@ -62,6 +77,13 @@ class TrainsSolution {
 		return $minDistance[$finish];
 	}
 
+	/**
+	 * Ques
+	 * @param  [type] $start  [description]
+	 * @param  [type] $finish [description]
+	 * @param  [type] $limit  [description]
+	 * @return [type]         [description]
+	 */
 	public function getTripsWithDistanceLimit($start, $finish, $limit) {
 		$trips = 0;
 		$q = new SplQueue();
